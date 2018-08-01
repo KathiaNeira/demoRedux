@@ -6,17 +6,25 @@ export const WrapperContainer = styled.section`
 
 export const WrapperContainerList = styled.div`
     display: flex;
-    justify-content: space-between;
-    background-color: aqua;
-
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid gray;
+    padding-top: 40px;
 `
 
 export const WrapperList = styled.div`
     line-height: 25px;
     text-align: center;
+    margin-bottom: 40px;
 `
-export const WrapperImage = styled.img`
+export const WrapperImage = styled.div`
     width:250px;
+    
+`
+
+export const Image = styled.img`
+    width:auto;
+    height: 150px;
 `
 
 export const Button = styled.a`
