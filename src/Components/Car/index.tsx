@@ -1,22 +1,23 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { WrapperContainer } from './Wrapper' 
+import { WrapperImage, WrapperButton, WrapperName} from './Wrapper' 
 
 interface Props {
-	id:any,
-	name: string
+    name: string,
+    image: string
 }
 
-const Car: React.SFC<Props> = ({ id, name }) => (
-    <WrapperContainer>
-        <p>id={id}</p>
-        <p>{name}</p>
-    </WrapperContainer>
+const Car: React.SFC<Props> = ({ name, image }) => (
+    <React.Fragment>
+        <WrapperImage src={image}/>
+        <WrapperName>{name}</WrapperName>
+        <WrapperButton>Adoptar</WrapperButton>
+    </React.Fragment>
 )
 
 Car.propTypes = {
-	id: PropTypes.any,
-	name: PropTypes.string
+    name: PropTypes.string,
+    image: PropTypes.string
 }
 
 export { Car }

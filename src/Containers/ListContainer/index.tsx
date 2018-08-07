@@ -16,13 +16,20 @@ export class ListContainer extends React.Component<{}, State> {
         }
         
         this.addToCar = this.addToCar.bind(this);
+
+        store.subscribe(()=>{
+	    	this.setState({
+	    		options: store.getState().options
+	    	})
+		});
     }
 
     addToCar(product) {
+        console.log('cambiando...', product);
         store.dispatch({
-            type: "ADD_TO_CART",
+            type: "SELECT_DOG",
             product
-        })
+        });
     }
 
     render(): JSX.Element {     
@@ -30,7 +37,7 @@ export class ListContainer extends React.Component<{}, State> {
             <WrapperContainerList>
                 {this.state.options.map((element, index) => {
                     return(
-                        <List key={index} id={element.id} image={element.image} onclick={() => this.addToCar(element)}/>
+                        <List key={index} id={element.id} image={element.image} name={element.name} sexo={element.sexo} age={element.age} onclick={() => this.addToCar(element)} availability={element.availability}/>
                     )
                 })}
             </WrapperContainerList>

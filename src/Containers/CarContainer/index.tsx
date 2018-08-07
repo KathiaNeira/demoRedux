@@ -1,36 +1,32 @@
 import * as React from 'react';
 import { Car } from '../../Components/Car';
-import { store } from '../../store'
+import { store } from '../../store';
+import { WrapperContainer } from '../../Components/Car/Wrapper'
 
 interface State {
-	car: any
+	selected: any
 }
 
 export class CarContainer extends React.Component<{}, State> {
     constructor(props) {
         super(props);
         this.state = {
-        	car: []
+        	selected: {}
         };
 
         store.subscribe(()=>{
 	    	this.setState({
-	    		car: store.getState().car
+	    		selected: store.getState().selected
 	    	})
-	    })
+		});
     }
 
-
     render(): JSX.Element {
-    	console.log('this.state.car', this.state.car)
+		console.log('this.state.car0', this.state.selected)
         return(
-        	<React.Fragment>
-			{this.state.car.map((element, index) => {
-	           	return(
-	                <Car id={element.id} name={element.name}/>
-				)
-	        })}
-	        </React.Fragment>
+        	<WrapperContainer>
+				<Car name={this.state.selected.name} image={this.state.selected.image} />
+	        </WrapperContainer>
            
         )
     }
