@@ -25,7 +25,6 @@ export class ListContainer extends React.Component<{}, State> {
     }
 
     addToCar(product) {
-        console.log('cambiando...', product);
         store.dispatch({
             type: "SELECT_DOG",
             product
@@ -37,7 +36,7 @@ export class ListContainer extends React.Component<{}, State> {
             <WrapperContainerList>
                 {this.state.options.map((element, index) => {
                     return(
-                        <List key={index} id={element.id} image={element.image} name={element.name} sexo={element.sexo} age={element.age} onclick={() => this.addToCar(element)} availability={element.availability}/>
+                        <List key={index} id={element.id} image={element.image} name={element.name} sexo={element.sexo} age={element.age} onclick={() => this.addToCar(element)} availability={element.availability} adopted={element.adopted}/>
                     )
                 })}
             </WrapperContainerList>

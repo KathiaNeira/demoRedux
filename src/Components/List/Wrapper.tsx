@@ -4,6 +4,10 @@ interface Button {
     availability: boolean
 }
 
+interface Card {
+    adopted: boolean
+}
+
 export const WrapperContainer = styled.section`
     display: flex;
     max-width: 1800px;
@@ -32,6 +36,7 @@ export const WrapperName = styled.span`
 `
 
 export const WrapperList = styled.div`
+    position: relative;
     line-height: 25px;
     text-align: center;
     margin-bottom: 20px;
@@ -69,4 +74,27 @@ export const Button = styled.a`
 
 export const Container = styled.div`
 
+`
+
+export const WrapperBlocked = styled.div`
+    display: none;
+    ${(props: Card) => props.adopted && css`
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background: #808080b3;
+        cursor: no-drop;
+        pointer-events: auto;
+    `}
+`
+
+export const Adopted = styled.p`
+    background: #2351b9;
+    margin: 0;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
 `

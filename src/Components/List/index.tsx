@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { WrapperList, WrapperImage, Container, Button, Image, WrapperInfo, WrapperName} from './Wrapper';
+import { WrapperList, WrapperImage, Container, Button, Image, WrapperInfo, WrapperName, WrapperBlocked, Adopted} from './Wrapper';
 
 
 interface Props {
@@ -10,10 +10,11 @@ interface Props {
     sexo:string,
     age: string,
     onclick: any,
-    availability: any
+    availability: any,
+    adopted: any
 }
 
-const List: React.SFC<Props> = ({ id, image, name, sexo, age, onclick, availability }) => (
+const List: React.SFC<Props> = ({ id, image, name, sexo, age, onclick, availability, adopted }) => (
     <React.Fragment>
         <WrapperList>
             <Container>
@@ -31,6 +32,9 @@ const List: React.SFC<Props> = ({ id, image, name, sexo, age, onclick, availabil
                     </WrapperName>
                 </WrapperInfo>
             </Container>
+            <WrapperBlocked adopted={adopted}>
+                <Adopted>Adoptado</Adopted>
+            </WrapperBlocked>
         </WrapperList>
     </React.Fragment>
 )
@@ -42,7 +46,8 @@ List.propTypes =  {
     sexo: PropTypes.string,
     age: PropTypes.string,
     onclick: PropTypes.func,
-    availability: PropTypes.any
+    availability: PropTypes.any,
+    adopted: PropTypes.any
 }
 
 export { List }
